@@ -4,6 +4,8 @@ import uuid
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes.escalation import router as escalation_router
+from app.api.routes.health import router as health_router
 from app.api.routes.whatsapp_webhook import router as whatsapp_router
 from app.core.config import settings
 from app.core.logging import get_correlation_id, logger, set_correlation_id, setup_logging
@@ -55,7 +57,9 @@ async def correlation_id_middleware(request: Request, call_next):
 
 
 # Register API Routers
+app.include_router(health_router)
 app.include_router(whatsapp_router)
+app.include_router(escalation_router)
 
 
 @app.get("/")
