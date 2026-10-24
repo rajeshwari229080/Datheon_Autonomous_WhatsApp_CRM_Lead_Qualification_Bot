@@ -42,6 +42,8 @@ ENV/
 htmlcov/
 .tox/
 .nox/
+.mypy_cache/
+.ruff_cache/
 
 # IDE & OS
 .idea/
@@ -55,3 +57,7 @@ Thumbs.db
 # Logs
 *.log
 logs/
+
+# Temporary scratch media
+scratch/
+tmp/

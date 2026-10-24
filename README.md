@@ -1,15 +1,44 @@
 # Datheon Autonomous WhatsApp AI Lead Qualification, Calendar Booking & Human Escalation Platform
 
-[![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com/)
-[![Tests](https://img.shields.io/badge/tests-25%20passed-brightgreen.svg)]()
-[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+<p align="center">
+  <img src="assets/hero_banner.png" alt="Datheon Autonomous WhatsApp AI Lead Qualification Platform" width="100%" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.08);" />
+</p>
 
-An enterprise-grade, secure, and production-ready Python backend platform built for **Datheon** that automates inbound WhatsApp business conversations, qualifies commercial leads using structured LLM outputs and configurable business rules, books calendar demonstrations with race-condition prevention, synchronizes CRM records with failure reconciliation, and dynamically escalates frustrated clients to human sales representatives.
+<p align="center">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.12%2B-3776AB.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12+"></a>
+  <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"></a>
+  <a href="#-automated-test-suite"><img src="https://img.shields.io/badge/tests-25%20passed%20(100%25)-10b981.svg?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="License MIT"></a>
+  <a href="#-linkedin-project-showcase"><img src="https://img.shields.io/badge/LinkedIn-Showcase%20Ready-0A66C2.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/badge/code%20style-ruff-261230.svg?style=for-the-badge" alt="Ruff"></a>
+</p>
+
+An enterprise-grade, secure, and production-ready Python backend platform built for **Datheon** that automates inbound WhatsApp business conversations, qualifies commercial leads using structured LLM outputs and deterministic business rules, books calendar demonstrations with race-condition prevention, synchronizes CRM records with failure reconciliation, and dynamically escalates frustrated clients to human sales representatives.
+
+---
+
+## 📑 Table of Contents
+- [🏛️ System Architecture](#️-system-architecture)
+- [💬 Conversational Experience](#-conversational-experience)
+- [🚀 Key Architectural Features & The 4 Tasks](#-key-architectural-features--the-4-tasks)
+- [📱 LinkedIn Project Showcase](#-linkedin-project-showcase)
+- [🛠️ Quickstart & Setup Guide](#️-quickstart--setup-guide)
+- [🧪 Automated Test Suite](#-automated-test-suite)
+- [📡 API Reference](#-api-reference)
+- [🛡️ Security & Threat Modeling](#️-security--threat-modeling)
+- [📄 License & Attribution](#-license--attribution)
 
 ---
 
 ## 🏛️ System Architecture
+
+The platform is designed around strict separation of concerns, complete decoupling between LLM reasoning and deterministic business execution, and zero unhandled failure modes.
+
+<p align="center">
+  <img src="assets/system_architecture_light.svg" alt="System Architecture Overview" width="100%" style="border-radius: 10px; border: 1px solid #e2e8f0;" />
+</p>
+
+### Detailed Component Flow
 
 ```mermaid
 flowchart TB
@@ -68,7 +97,17 @@ flowchart TB
 
 ---
 
-## 🚀 Key Architectural Features & The 4 Mandatory Tasks
+## 💬 Conversational Experience
+
+Here is a side-by-side walkthrough of the qualification, booking, and human escalation experience:
+
+<p align="center">
+  <img src="assets/whatsapp_chat_mockup.png" alt="WhatsApp Conversational Mockup" width="85%" style="border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;" />
+</p>
+
+---
+
+## 🚀 Key Architectural Features & The 4 Tasks
 
 ### 1. Task 1: WhatsApp Webhook Architecture & Cryptographic Verification
 - **GET Handshake**: Responds to Meta's subscription challenge (`hub.mode == "subscribe"` and `hub.verify_token`) with exact integer challenge and HTTP 200.
@@ -99,6 +138,22 @@ flowchart TB
 - **Team Alerts**: Dispatches Slack Block Kit cards or webhooks with customer details and conversation context.
 - **Admin Management API**: Endpoints at `/api/v1/escalations` allow human staff to review incidents, resolve escalations, and optionally resume automation.
 - **Observability**: Structured JSON logging with request correlation IDs (`X-Correlation-ID`), Kubernetes liveness/readiness probes (`/health/live`, `/health/ready`), and Prometheus metrics (`/metrics`).
+
+---
+
+## 📱 LinkedIn Project Showcase
+
+A comprehensive technical breakdown and ready-to-publish social showcase is included in this repository for engineers and hiring managers:
+
+- **Full Post Copy**: Read [`linkedin.md`](linkedin.md) (or [`linked in.md`](linked%20in.md))
+- **Featured Image Asset (PNG)**: [`image.png`](image.png) or [`assets/linkedin_post.png`](assets/linkedin_post.png)
+- **Vector Banner (SVG)**: [`linkedin.svg`](linkedin.svg) or [`assets/linkedin_banner.svg`](assets/linkedin_banner.svg)
+
+<p align="center">
+  <a href="linkedin.md">
+    <img src="assets/linkedin_banner.svg" alt="LinkedIn Post Preview Graphic" width="100%" style="border-radius: 12px; border: 1px solid #cbd5e1;" />
+  </a>
+</p>
 
 ---
 
@@ -149,7 +204,7 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ## 🧪 Automated Test Suite
 
-Run the complete test suite:
+Run the complete test suite across all four core pillars:
 ```powershell
 python -m pytest tests/ -v
 ```
@@ -188,7 +243,7 @@ tests/unit/test_webhook_security.py::test_webhook_post_with_valid_hmac_accepted 
 tests/unit/test_webhook_security.py::test_webhook_replay_duplicate_delivery_idempotent PASSED [ 96%]
 tests/unit/test_webhook_security.py::test_webhook_delivery_status_notifications_handled PASSED [100%]
 
-============================= 25 passed in 3.89s ==============================
+============================= 25 passed in 3.65s ==============================
 ```
 
 ---
@@ -214,5 +269,6 @@ See [`docs/RUNBOOK.md`](docs/RUNBOOK.md) for operational runbooks, incident resp
 
 ---
 
-## 📄 License
-Proprietary & Confidential — Datheon Engineering 2026.
+## 📄 License & Attribution
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for full details.  
+Copyright &copy; 2026 Datheon Engineering & Contributors.
