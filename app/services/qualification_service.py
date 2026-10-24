@@ -32,24 +32,25 @@ class QualificationRulesEngine:
         require_decision_maker: bool = settings.REQUIRE_DECISION_MAKER,
     ) -> QualificationStatus:
         """Determines qualification status strictly based on business criteria."""
-        # 1. Check if required fields are still missing
-        if extraction.missing_fields:
-            return QualificationStatus.NEEDS_MORE_INFORMATION
-
-        # 2. Check budget threshold
+        # 1. Explicit Disqualification checks take precedence
         if extraction.budget.amount is not None and extraction.budget.amount < min_budget:
             logger.info(f"Lead disqualified: budget {extraction.budget.amount} below minimum {min_budget}")
             return QualificationStatus.NOT_QUALIFIED
 
-        # 3. Check company size threshold
         if extraction.company_size.employee_count is not None and extraction.company_size.employee_count < min_company_size:
             logger.info(f"Lead disqualified: company size {extraction.company_size.employee_count} below minimum {min_company_size}")
             return QualificationStatus.NOT_QUALIFIED
 
-        # 4. Check decision-maker authority
         if require_decision_maker and extraction.decision_maker == DecisionMakerStatus.NO:
             logger.info("Lead disqualified: contact has no decision authority.")
             return QualificationStatus.NOT_QUALIFIED
+
+        # 2. Check if required fields are still missing
+        if extraction.missing_fields:
+            return QualificationStatus.NEEDS_MORE_INFORMATION
+
+        if extraction.budget.amount is None or extraction.company_size.employee_count is None:
+            return QualificationStatus.NEEDS_MORE_INFORMATION
 
         return QualificationStatus.QUALIFIED
 

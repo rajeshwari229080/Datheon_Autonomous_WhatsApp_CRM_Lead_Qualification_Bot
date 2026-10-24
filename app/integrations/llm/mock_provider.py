@@ -49,30 +49,45 @@ class MockDeterministicLLMProvider(BaseLLMProvider):
             return QualificationExtractionResult(
                 qualification_status=QualificationStatus.NEEDS_MORE_INFORMATION,
                 confidence=0.95,
+                missing_fields=["prompt_injection_blocked"],
                 next_action="Reiterate qualification boundaries",
                 follow_up_question="I can only assist with Datheon sales and lead qualification. Could you tell me about your team's project requirements?",
             )
 
         # 3. Budget Extraction
         budget = BudgetInfo(**current_state.get("budget", {})) if current_state.get("budget") else BudgetInfo()
-        # Look for $X, Xk, X USD, etc.
-        budget_match = re.search(r"(\$|usd|eur|€)?\s*(\d+[\d,]*)\s*(k|thousand|usd|dollars)?", text)
+        # Look for explicit budget indicators: $X, €X, Xk, X dollars, budget is X
+        budget_match = (
+            re.search(r"(\$|€)\s*(\d+[\d,]*)\s*(k|thousand)?", text)
+            or re.search(r"(\d+[\d,]*)\s*(k|thousand)\b", text)
+            or re.search(r"(\d+[\d,]*)\s*(usd|eur|dollars)\b", text)
+            or re.search(r"budget\s*(?:is|of)?\s*(?:around|approx|only)?\s*(\$|€)?\s*(\d+[\d,]*)\s*(k|thousand)?", text)
+        )
         if budget_match:
-            raw_num_str = budget_match.group(2).replace(",", "")
-            try:
-                raw_num = float(raw_num_str)
-                unit = budget_match.group(3) or ""
-                if "k" in unit or "thousand" in unit:
-                    raw_num *= 1000.0
+            groups = budget_match.groups()
+            # Find the numeric part
+            num_str = None
+            unit = ""
+            for g in groups:
+                if g and re.match(r"^\d+[\d,]*$", g):
+                    num_str = g.replace(",", "")
+                elif g and g.lower() in ("k", "thousand"):
+                    unit = g.lower()
 
-                currency = "EUR" if "€" in text or "eur" in text else "USD"
-                budget = BudgetInfo(
-                    amount=raw_num,
-                    currency=currency,
-                    status="EXPLICIT",
-                )
-            except ValueError:
-                pass
+            if num_str:
+                try:
+                    raw_num = float(num_str)
+                    if "k" in unit or "thousand" in unit:
+                        raw_num *= 1000.0
+
+                    currency = "EUR" if "€" in text or "eur" in text else "USD"
+                    budget = BudgetInfo(
+                        amount=raw_num,
+                        currency=currency,
+                        status="EXPLICIT",
+                    )
+                except ValueError:
+                    pass
 
         # 4. Company Size Extraction
         company_size = CompanySizeInfo(**current_state.get("company_size", {})) if current_state.get("company_size") else CompanySizeInfo()
@@ -100,7 +115,7 @@ class MockDeterministicLLMProvider(BaseLLMProvider):
 
         # 6. Decision Maker Extraction
         decision_maker = DecisionMakerStatus(current_state.get("decision_maker", DecisionMakerStatus.UNKNOWN))
-        if any(w in text for w in ["i decide", "i'm the founder", "i am the cto", "ceo", "i have budget authority", "my decision"]):
+        if any(w in text for w in ["founder", "i decide", "i am the cto", "ceo", "c-level", "owner", "i have budget authority", "my decision"]):
             decision_maker = DecisionMakerStatus.YES
         elif any(w in text for w in ["need approval", "my boss decides", "not my call", "committee"]):
             decision_maker = DecisionMakerStatus.NO
