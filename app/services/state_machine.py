@@ -29,6 +29,8 @@ class ConversationStateMachine:
         },
         ConversationStage.GREETING: {
             ConversationStage.QUALIFICATION,
+            ConversationStage.QUALIFIED,
+            ConversationStage.NOT_QUALIFIED,
             ConversationStage.HUMAN_HANDOFF,
             ConversationStage.CLOSED,
         },
