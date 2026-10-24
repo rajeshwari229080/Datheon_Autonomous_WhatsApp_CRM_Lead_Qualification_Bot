@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datheon Autonomous WhatsApp AI Lead Qualification & CRM Booking Platform</title>
+  <meta name="description" content="Production-ready, enterprise-grade Python backend platform for automated WhatsApp lead qualification, calendar booking, and human escalation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="brand-logo">
+        <span>⚡ Datheon AI</span>
+        <span class="brand-badge">Enterprise Edition</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#simulator" class="nav-link">Live Simulator</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#pillars" class="nav-link">Core Pillars</a></li>
+        <li><a href="#api" class="nav-link">API Reference</a></li>
+        <li><a href="#tests" class="nav-link">Test Report</a></li>
+      </ul>
+      <a href="https://github.com/rajeshwari229080/Datheon_Autonomous_WhatsApp_CRM_Lead_Qualification_Bot" target="_blank" rel="noopener" class="nav-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub Repository
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="dot"></span>
+        Production-Ready Python 3.12 &amp; FastAPI Backend Platform
+      </div>
+      <h1 class="hero-title">
+        Autonomous WhatsApp AI <span class="gradient-text">Lead Qualification</span>, Calendar Booking &amp; Escalation
+      </h1>
+      <p class="hero-subtitle">
+        An enterprise architecture combining Meta Cloud API cryptographic webhooks, strict Pydantic V2 structured extraction, race-condition-free two-phase calendar booking, and multi-signal human escalation.
+      </p>
+
+      <div class="hero-badges">
+        <div class="badge-item">🐍 Python 3.12+</div>
+        <div class="badge-item">⚡ FastAPI 0.115+</div>
+        <div class="badge-item success">✅ 25/25 Tests Passing (100%)</div>
+        <div class="badge-item">🛡️ HMAC-SHA256 Auth</div>
+        <div class="badge-item">⚖️ MIT Licensed</div>
+        <div class="badge-item">🌐 GitHub Pages Deployed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Simulator Section -->
+  <section id="simulator" class="simulator-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Interactive Live Demonstration</div>
+        <h2 class="section-title">Test the Qualification Engine in Real Time</h2>
+        <p class="section-subtitle">Experience how the backend handles lead qualification, prompt injection attacks, calendar slot booking, and human escalation.</p>
+      </div>
+
+      <div class="simulator-layout">
+        <!-- Phone Simulator Mockup -->
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          
+          <div class="chat-header">
+            <div class="chat-avatar-info">
+              <div class="chat-avatar">D</div>
+              <div class="chat-user-details">
+                <h4>Datheon Sales AI</h4>
+                <p>Online &bull; Verified Business</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <!-- Messages inserted dynamically by app.js -->
+            <div class="typing-indicator" id="typingIndicator">
+              <span class="typing-dot"></span>
+              <span class="typing-dot"></span>
+              <span class="typing-dot"></span>
+            </div>
+          </div>
+
+          <div class="chat-input-area">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Type a message or test prompt..." />
+            <button id="sendBtn" class="send-btn" aria-label="Send Message">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulator Control & Inspector Panel -->
+        <div class="simulator-panel">
+          <!-- Scenario Trigger Card -->
+          <div class="panel-card">
+            <h3>⚡ One-Click Automated Scenarios</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;">Select any test case to watch the conversation flow and state transitions automatically:</p>
+            
+            <div class="scenario-buttons">
+              <button class="scenario-btn active" data-scenario="happy">
+                <strong>🌟 Scenario 1: Happy Path Qualification</strong>
+                <span>$15k budget, 28 seats &rarr; Qualified &amp; Booked</span>
+              </button>
+
+              <button class="scenario-btn" data-scenario="disqualified">
+                <strong>❌ Scenario 2: Disqualified Lead</strong>
+                <span>$150 budget, 1 seat &rarr; Below business threshold</span>
+              </button>
+
+              <button class="scenario-btn" data-scenario="injection">
+                <strong>🛡️ Scenario 3: Prompt Injection Attack</strong>
+                <span>Delimiter fencing blocks instruction overrides</span>
+              </button>
+
+              <button class="scenario-btn" data-scenario="escalate">
+                <strong>🚨 Scenario 4: Human Escalation</strong>
+                <span>Frustration triggers immediate bot halt &amp; Slack alert</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic State Machine Stepper Card -->
+          <div class="panel-card">
+            <h3>🔄 Real-Time Finite State Machine Tracker</h3>
+            <div class="state-stepper">
+              <div class="state-step" id="stepNew">
+                <div class="step-node">1</div>
+                <div class="step-label">New</div>
+              </div>
+              <div class="state-step" id="stepGreeting">
+                <div class="step-node">2</div>
+                <div class="step-label">Greeting</div>
+              </div>
+              <div class="state-step" id="stepQual">
+                <div class="step-node">3</div>
+                <div class="step-label">Qualifying</div>
+              </div>
+              <div class="state-step" id="stepQualified">
+                <div class="step-node">4</div>
+                <div class="step-label">Qualified</div>
+              </div>
+              <div class="state-step" id="stepBooking">
+                <div class="step-node">5</div>
+                <div class="step-label">Booking</div>
+              </div>
+              <div class="state-step" id="stepBooked">
+                <div class="step-node">6</div>
+                <div class="step-label">Booked</div>
+              </div>
+              <div class="state-step" id="stepHandoff">
+                <div class="step-node">H</div>
+                <div class="step-label">Escalated</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Real-Time Extracted Data Inspector -->
+          <div class="panel-card">
+            <h3>🔬 Lead Dossier &amp; Guardrail Telemetry</h3>
+            <div class="inspect-grid">
+              <div class="inspect-item">
+                <label>Conversation State</label>
+                <div class="val" id="valState">QUALIFIED</div>
+              </div>
+              <div class="inspect-item">
+                <label>Lead Status</label>
+                <div class="val" id="valStatus" style="color: var(--emerald-600);">QUALIFIED</div>
+              </div>
+              <div class="inspect-item">
+                <label>Extracted Budget</label>
+                <div class="val" id="valBudget">$15,000 USD</div>
+              </div>
+              <div class="inspect-item">
+                <label>Company Size</label>
+                <div class="val" id="valSize">28 seats</div>
+              </div>
+              <div class="inspect-item">
+                <label>Decision Maker</label>
+                <div class="val" id="valDecision">YES</div>
+              </div>
+              <div class="inspect-item">
+                <label>Active Guardrail</label>
+                <div class="val" id="valGuardrail" style="color: var(--blue-primary);">Two-Phase Lock</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture & Deep Dive Section -->
+  <section id="architecture" style="padding: 40px 0 60px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Enterprise Architecture</div>
+        <h2 class="section-title">Designed for Production Reliability</h2>
+        <p class="section-subtitle">Zero unhandled exceptions, decoupled LLM execution, and deterministic state transitions.</p>
+      </div>
+
+      <div class="section-tabs">
+        <button class="tab-btn active" data-tab="tab-arch">System Architecture</button>
+        <button class="tab-btn" data-tab="tab-pillars">The 4 Core Pillars</button>
+        <button class="tab-btn" data-tab="tab-api">API Playground</button>
+        <button class="tab-btn" data-tab="tab-tests">Test Suite Report</button>
+      </div>
+
+      <!-- Tab 1: Architecture Diagram -->
+      <div class="tab-content active" id="tab-arch">
+        <div class="arch-card">
+          <div class="arch-img-wrap">
+            <img src="assets/system_architecture_light.svg" alt="Datheon System Architecture" width="100%" />
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); text-align: center;">
+            Figure 1.0: Complete light-theme architectural workflow featuring Meta Cloud API webhook authentication, deduplication, structured LLM extraction, two-phase slot reservation, and automated human handoff.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tab 2: 4 Core Pillars -->
+      <div class="tab-content" id="tab-pillars">
+        <div class="pillar-grid">
+          <div class="pillar-box">
+            <div class="num">1</div>
+            <h4>Cryptographic Ingestion</h4>
+            <p>HMAC-SHA256 signature verification over raw request body with constant-time equality checks and <code>wamid</code> deduplication.</p>
+          </div>
+          <div class="pillar-box">
+            <div class="num">2</div>
+            <h4>Structured LLM Guardrails</h4>
+            <p>Pydantic V2 schemas, <code>&lt;CUSTOMER_INPUT&gt;</code> delimiter fencing against prompt injections, and decoupled deterministic rules.</p>
+          </div>
+          <div class="pillar-box">
+            <div class="num">3</div>
+            <h4>Two-Phase Calendar Lock</h4>
+            <p>Prevents race conditions by re-verifying slot availability right before booking. Self-healing background CRM reconciliation worker.</p>
+          </div>
+          <div class="pillar-box">
+            <div class="num">4</div>
+            <h4>Immediate Human Escalation</h4>
+            <p>Multi-signal sentiment and loop detection triggers instantaneous cessation of bot replies and dispatches Slack Block Kit cards.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: API Playground -->
+      <div class="tab-content" id="tab-api">
+        <div class="arch-card">
+          <h3 style="margin-bottom: 12px;">Test the Webhook Ingestion API</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">
+            Copy and run these production cURL commands against your local or deployed FastAPI service:
+          </p>
+
+          <h4 style="font-size: 0.9rem; margin-top: 14px;">1. Meta Webhook Subscription Challenge (GET)</h4>
+          <div class="code-block-wrap">
+            <button class="copy-btn" data-copy="curl -X GET 'http://localhost:8000/api/v1/whatsapp/webhook?hub.mode=subscribe&hub.verify_token=your_meta_webhook_verify_token_here&hub.challenge=1158201444'">Copy</button>
+            <code>curl -X GET 'http://localhost:8000/api/v1/whatsapp/webhook?hub.mode=subscribe&amp;hub.verify_token=your_meta_webhook_verify_token_here&amp;hub.challenge=1158201444'</code>
+          </div>
+
+          <h4 style="font-size: 0.9rem; margin-top: 20px;">2. Health Check &amp; Dependency Readiness Probe</h4>
+          <div class="code-block-wrap">
+            <button class="copy-btn" data-copy="curl -X GET 'http://localhost:8000/health/ready'">Copy</button>
+            <code>curl -X GET 'http://localhost:8000/health/ready'</code>
+          </div>
+
+          <h4 style="font-size: 0.9rem; margin-top: 20px;">3. Prometheus Telemetry Exposition</h4>
+          <div class="code-block-wrap">
+            <button class="copy-btn" data-copy="curl -X GET 'http://localhost:8000/metrics'">Copy</button>
+            <code>curl -X GET 'http://localhost:8000/metrics'</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Test Report -->
+      <div class="tab-content" id="tab-tests">
+        <div class="arch-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+            <h3>Automated Test Execution Summary</h3>
+            <span class="badge-item success" style="font-size: 0.9rem;">25 Passed &bull; 0 Failed (100% Pass Rate in 3.57s)</span>
+          </div>
+          <div class="code-block-wrap" style="background: #1e293b;">
+            <pre style="margin: 0; color: #38bdf8;">tests/e2e/test_end_to_end_flow.py::test_health_and_prometheus_metrics PASSED [  4%]
+tests/e2e/test_end_to_end_flow.py::test_complete_qualification_to_booking_e2e PASSED [  8%]
+tests/e2e/test_end_to_end_flow.py::test_complete_frustration_escalation_e2e PASSED [ 12%]
+tests/unit/test_booking.py::test_unqualified_cannot_book PASSED          [ 16%]
+tests/unit/test_booking.py::test_present_slots_success PASSED            [ 20%]
+tests/unit/test_booking.py::test_confirm_slot_booking_success PASSED     [ 24%]
+tests/unit/test_booking.py::test_concurrent_slot_race_condition PASSED   [ 28%]
+tests/unit/test_booking.py::test_crm_partial_failure_and_reconciliation PASSED [ 32%]
+tests/unit/test_escalation.py::test_frustration_detection_keywords PASSED [ 36%]
+tests/unit/test_escalation.py::test_human_request_triggers_escalation_and_halts_autonomous_replies PASSED [ 40%]
+tests/unit/test_escalation.py::test_resolve_escalation_and_resume_automation PASSED [ 44%]
+tests/unit/test_qualification.py::test_extraction_valid_qualified_lead PASSED [ 48%]
+tests/unit/test_qualification.py::test_extraction_low_budget_disqualified PASSED [ 52%]
+tests/unit/test_qualification.py::test_extraction_small_company_disqualified PASSED [ 56%]
+tests/unit/test_qualification.py::test_extraction_missing_fields_one_question_at_a_time PASSED [ 60%]
+tests/unit/test_qualification.py::test_prompt_injection_defense PASSED   [ 64%]
+tests/unit/test_qualification.py::test_human_request_detection PASSED    [ 68%]
+tests/unit/test_webhook_security.py::test_webhook_challenge_success PASSED [ 72%]
+tests/unit/test_webhook_security.py::test_webhook_challenge_invalid_token PASSED [ 76%]
+tests/unit/test_webhook_security.py::test_webhook_challenge_invalid_mode PASSED [ 80%]
+tests/unit/test_webhook_security.py::test_webhook_post_without_signature_rejected PASSED [ 84%]
+tests/unit/test_webhook_security.py::test_webhook_post_with_forged_signature_rejected PASSED [ 88%]
+tests/unit/test_webhook_security.py::test_webhook_post_with_valid_hmac_accepted PASSED [ 92%]
+tests/unit/test_webhook_security.py::test_webhook_replay_duplicate_delivery_idempotent PASSED [ 96%]
+tests/unit/test_webhook_security.py::test_webhook_delivery_status_notifications_handled PASSED [100%]</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Pages Configuration Guide Card -->
+  <section style="padding: 20px 0 60px;">
+    <div class="container">
+      <div class="panel-card" style="border: 2px dashed var(--emerald-500); background: var(--emerald-50);">
+        <h3 style="color: var(--emerald-700);">⚙️ Enabling GitHub Pages for this Repository</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
+          To activate GitHub Pages for your repository at <code>https://github.com/rajeshwari229080/Datheon_Autonomous_WhatsApp_CRM_Lead_Qualification_Bot/settings/pages</code>:
+        </p>
+        <ul style="padding-left: 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8;">
+          <li><strong>Option 1 (Recommended - GitHub Actions)</strong>: In the <strong>Source</strong> dropdown, select <strong>GitHub Actions</strong>. Our <code>.github/workflows/pages.yml</code> will automatically build and publish your showcase.</li>
+          <li><strong>Option 2 (Direct Branch)</strong>: In the <strong>Source</strong> dropdown, select <strong>Deploy from a branch</strong> &rarr; Branch: <strong>main</strong> &rarr; Folder: <strong>/docs</strong> &rarr; Click <strong>Save</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Datheon Autonomous WhatsApp AI Lead Qualification Platform &bull; Open Source under the <a href="LICENSE">MIT License</a>.</p>
+      <p style="margin-top: 6px; font-size: 0.75rem; color: var(--text-muted);">&copy; 2026 Datheon Engineering &amp; Contributors.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

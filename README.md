@@ -8,6 +8,7 @@
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.12%2B-3776AB.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12+"></a>
   <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"></a>
   <a href="#-automated-test-suite"><img src="https://img.shields.io/badge/tests-25%20passed%20(100%25)-10b981.svg?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests"></a>
+  <a href="https://rajeshwari229080.github.io/Datheon_Autonomous_WhatsApp_CRM_Lead_Qualification_Bot/"><img src="https://img.shields.io/badge/Demo-Live%20on%20GitHub%20Pages-25D366.svg?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Demo on GitHub Pages"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="License MIT"></a>
   <a href="#-linkedin-project-showcase"><img src="https://img.shields.io/badge/LinkedIn-Showcase%20Ready-0A66C2.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
   <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/badge/code%20style-ruff-261230.svg?style=for-the-badge" alt="Ruff"></a>
@@ -17,7 +18,22 @@ An enterprise-grade, secure, and production-ready Python backend platform built 
 
 ---
 
+## 🌐 Live Web Demo & GitHub Pages Showcase
+
+Experience the full autonomous qualification flow in your browser with our interactive simulator and live state visualizer:  
+👉 **[Launch Interactive GitHub Pages Showcase](https://rajeshwari229080.github.io/Datheon_Autonomous_WhatsApp_CRM_Lead_Qualification_Bot/)**
+
+### How to Enable GitHub Pages in Repository Settings:
+If GitHub Pages is not yet enabled in your repository:
+1. Navigate to: **Settings → Pages**
+2. Under **"Build and deployment"**:
+   - **Source**: Select **GitHub Actions** *(Recommended — builds and deploys via `.github/workflows/pages.yml` automatically)*.
+   - *Alternative*: Select **Deploy from a branch** → Branch: `main` → Folder: `/docs` → Click **Save**.
+
+---
+
 ## 📑 Table of Contents
+- [🌐 Live Web Demo & GitHub Pages Showcase](#-live-web-demo--github-pages-showcase)
 - [🏛️ System Architecture](#️-system-architecture)
 - [💬 Conversational Experience](#-conversational-experience)
 - [🚀 Key Architectural Features & The 4 Tasks](#-key-architectural-features--the-4-tasks)
