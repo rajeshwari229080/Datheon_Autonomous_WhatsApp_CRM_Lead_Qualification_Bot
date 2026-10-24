@@ -59,6 +59,12 @@ class BookingService:
         await self.conv_repo.update_context(conversation_id, "offered_slots", slot_map)
         await self.conv_repo.update_context(conversation_id, "booking_token", confirmation_token)
 
+        # Advance conversation stage to BOOKING
+        conv = await self.conv_repo.get_by_id(conversation_id)
+        if conv and conv.stage == ConversationStage.QUALIFIED:
+            ConversationStateMachine.validate_transition(conv.stage, ConversationStage.BOOKING)
+            await self.conv_repo.update_stage(conversation_id, ConversationStage.BOOKING)
+
         # 4. Format friendly WhatsApp message
         options_text = "\n".join([f"*{i+1}️⃣* {s.display_text}" for i, s in enumerate(slots)])
         message_text = (

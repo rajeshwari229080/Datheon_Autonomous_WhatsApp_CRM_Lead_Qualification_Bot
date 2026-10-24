@@ -41,6 +41,7 @@ class ConversationStateMachine:
         },
         ConversationStage.QUALIFIED: {
             ConversationStage.BOOKING,
+            ConversationStage.BOOKED,
             ConversationStage.HUMAN_HANDOFF,
             ConversationStage.CLOSED,
         },
